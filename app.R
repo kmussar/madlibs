@@ -8,7 +8,7 @@ generate_story <- function(noun, verb, adjective, adverb) {
     {verb} {adverb}. It was the funniest thing ever!
   "
   )
-  cat(strep('-',100), "\n", file=stderr())
+  cat('------------------', file=stderr())
   cat(story,file=stderr())
   story
 }
