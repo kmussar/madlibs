@@ -1,12 +1,15 @@
 library(shiny)
+library(useself)
 
 generate_story <- function(noun, verb, adjective, adverb) {
-  glue::glue(
+  story <- glue::glue(
     "
     Once upon a time, there was a {adjective} {noun} who loved to
     {verb} {adverb}. It was the funniest thing ever!
   "
   )
+  cat(story,file=stderr())
+  story
 }
 
 ui <- fluidPage(
@@ -16,7 +19,8 @@ ui <- fluidPage(
       textInput("noun1", "Enter a noun:", ""),
       textInput("verb", "Enter a verb:", ""),
       textInput("adjective", "Enter an adjective:", ""),
-      textInput("adverb", "Enter an adverb:", "")
+      textInput("adverb", "Enter an adverb:", ""),
+      actionButton("submit","Create Story")
     ),
     mainPanel(
       h3("Your Mad Libs Story:"),
